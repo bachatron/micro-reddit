@@ -1,6 +1,14 @@
+<% if @post.errors.any? %>
+  <ul>
+    <% @post.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <h1>New Post</h1>
 
-<%= form_with model: @post do |f| %>
+<%= form_with model: @post, data: { turbo: false } do |f| %>
   <div>
     <%= f.label :title %><br>
     <%= f.text_field :title %>
